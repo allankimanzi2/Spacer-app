@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Admin from './components/Admin';
 import User from './components/User';
-import BookSpace from './components/BookSpace';
+
 
 function App() {
   return (
@@ -20,10 +20,8 @@ function App() {
       </div>
       <Admin />
       <User />
-      <BookSpace />
-      
+
     </div>
   );
 }
 
-export default App;
