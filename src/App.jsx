@@ -3,6 +3,7 @@ import './App.css';
 import Admin from './components/Admin';
 import User from './components/User';
 
+
 function App() {
   return (
     <div className="App">
@@ -19,8 +20,8 @@ function App() {
       </div>
       <Admin />
       <User />
+
     </div>
   );
 }
 
-export default App;
