@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
+import Spacer from './components/Spacer';
 import Admin from './components/Admin';
 import User from './components/User';
 import BookSpace from './components/BookSpace';
+import CreateAccount from './components/CreateAccount'; 
 
 function App() {
   return (
     <div className="App">
       <header className="bg-gray-800 text-white p-4">
-        <h1 className="text-3xl">Space Booking Platform</h1>
+        <h1 className="text-3xl">Spacer App</h1>
       </header>
       <div className="my-4 text-center">
         <input 
@@ -21,6 +23,10 @@ function App() {
       <Admin />
       <User />
       <BookSpace />
+      <Spacer />
+      <CreateAccount />
+
+
       
     </div>
   );
