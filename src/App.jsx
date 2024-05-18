@@ -3,8 +3,8 @@ import './App.css';
 import Spacer from './components/Spacer';
 import Admin from './components/Admin';
 import User from './components/User';
-import BookSpace from './components/BookSpace';
-import CreateAccount from './components/CreateAccount'; 
+import Launcher from './components/Launcher';
+
 
 function App() {
   return (
@@ -22,14 +22,8 @@ function App() {
       </div>
       <Admin />
       <User />
-      <BookSpace />
-      <Spacer />
-      <CreateAccount />
 
-
-      
     </div>
   );
 }
 
-export default App;
