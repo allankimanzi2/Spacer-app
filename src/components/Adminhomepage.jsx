@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../styling/Adminhomepage.css";
-import { FaSignOutAlt  } from "react-icons/fa"; // Import icons
+import NavbarAdmin from "./NavbarAdmin";
 
 
 const Adminhomepage = () => {
@@ -32,7 +32,7 @@ const Adminhomepage = () => {
 
   const fetchSpaces = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/spaces");
+      const response = await fetch("https://madespacer-1.onrender.com/spaces");
       const data = await response.json();
       setSpaces(data.spaces);
     } catch (error) {
@@ -42,7 +42,7 @@ const Adminhomepage = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/users");
+      const response = await fetch("https://madespacer-1.onrender.com/users");
       const data = await response.json();
       setUsers(data.users);
     } catch (error) {
@@ -52,7 +52,7 @@ const Adminhomepage = () => {
 
   const fetchBookings = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/bookings");
+      const response = await fetch("https://madespacer-1.onrender.com/bookings");
       const data = await response.json();
       setBookings(data.bookings);
     } catch (error) {
@@ -63,7 +63,7 @@ const Adminhomepage = () => {
   const handleAddSpace = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:5000/spaces", {
+      const response = await fetch("https://madespacer-1.onrender.com/spaces", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -85,7 +85,7 @@ const Adminhomepage = () => {
   const handleAddUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:5000/users", {
+      const response = await fetch("https://madespacer-1.onrender.com/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -104,41 +104,17 @@ const Adminhomepage = () => {
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:5000/adminlogout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      const data = await response.json();
-      if (data.success) {
-        toast.success(data.message);
-        // Redirect to the login page 
-        window.location.href = "/login"; // Update this with your login page route
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      toast.error("Error during logout");
-    }
-  };
+ 
 
 
 
   return (
-    <div className="admin-homepage">
+    <div className="admin-homepage-wrapper">
+      <NavbarAdmin />
+      <div className="admin-homepage">
         <div>
         <h1><strong>Admin Dashboard</strong></h1>
-        <div className="logginout">
-          <div className="logout-container">
-              <button onClick={handleLogout} className="logout-button">
-                <FaSignOutAlt className="logout-icon" />
-                Logout
-              </button>
-          </div>
-        </div>
+        
        
       </div>
     
@@ -254,7 +230,9 @@ const Adminhomepage = () => {
       </div>
 
       <ToastContainer />
+      </div>
     </div>
+    
   );
 };
 
