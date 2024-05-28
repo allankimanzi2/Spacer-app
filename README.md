@@ -11,6 +11,3 @@
     npm install react-toastify
     npm install axios
     npm install react-icons
-
-
-npm install @babel/core @babel/cli @babel/preset-env @babel/preset-react @babel/node --save-devev

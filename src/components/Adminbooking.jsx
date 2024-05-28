@@ -48,7 +48,7 @@ const Adminbooking = () => {
   const handleBooking = async () => {
     try {
       const response = await axios.post(
-        "https://madespacer-1.onrender.com/bookings",
+        "http://localhost:5000/bookings",
         {
           space_id: selectedSpaceId,
           start_time: startTime,
