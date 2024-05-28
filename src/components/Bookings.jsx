@@ -1,8 +1,9 @@
-import axios from "axios";
+
 import { useState } from "react";
-import { toast } from "react-toastify";
+
 import "../styling/Bookings.css";
 import "../styling/Cat.css"
+import { useNavigate } from "react-router-dom";
 
 const Bookings = () => {
   const [phone, setPhone] = useState("");
@@ -10,31 +11,32 @@ const Bookings = () => {
   const [callbackUrl, setCallbackUrl] = useState("");
   const [accountRef, setAccountRef] = useState("");
   const [description, setDescription] = useState("");
-  const [showLoader, setShowLoader] = useState(false);
 
-  const handlePayment = async () => {
-    setShowLoader(true);
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/make_payment",
-        {
-          phone_number: phone,
-          amount: amount,
-          callback_url: callbackUrl,
-          account_ref: accountRef,
-          description: description
-        }
-      );
-      toast.success("Payment successful");
-    } catch (error) {
-      toast.error("Failed to make payment");
-    } finally {
-      setShowLoader(false);
-    }
-  };
+  const navigate = useNavigate();
+
+  // const handlePayment = async () => {
+  //   setShowLoader(true);
+  //   try {
+  //     const response = await axios.post(
+  //       "https://madespacer-1.onrender.com/make_payment",
+  //       {
+  //         phone_number: phone,
+  //         amount: amount,
+  //         callback_url: callbackUrl,
+  //         account_ref: accountRef,
+  //         description: description
+  //       }
+  //     );
+  //     toast.success("Payment successful");
+  //   } catch (error) {
+  //     toast.error("Failed to make payment");
+  //   } finally {
+  //     setShowLoader(false);
+  //   }
+  // };
 
   const handleBackClick = () => {
-    window.location.href = "/Userhomepage";
+    navigate ("/Userhomepage");
   };
 
   return (
@@ -237,7 +239,7 @@ const Bookings = () => {
           <input type="text" id="accountRef" value={accountRef} onChange={(e) => setAccountRef(e.target.value)} />
           <label htmlFor="description">Description:</label>
           <input type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-          <button onClick={handlePayment}>Make Payment</button>
+          <button >Make Payment</button>
         </div>
 
       </div>

@@ -1,18 +1,19 @@
 import { useState } from "react";
 import '../styling/Accountcreation.css';
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const Userlogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/userlogin", {
+      const response = await fetch("https://madespacer-2.onrender.com/userlogin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,7 +25,7 @@ const Userlogin = () => {
         toast.success("Successfully signed in", {
           autoClose: 100,
           onClose: () => {
-            window.location.href = "Userhomepage";
+          navigate ( "/Userhomepage" );
           },
         });
       } else {
@@ -88,7 +89,7 @@ const Userlogin = () => {
           <button type="submit">Sign In</button>
         </form>
         <br />
-        <p>Don't have an account? <Link to="/signup">Signup</Link></p>
+        <p>No a account? <Link to="/signup">Signup</Link></p>
         <ToastContainer />
       </div>
     </div>

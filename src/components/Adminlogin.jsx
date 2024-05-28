@@ -2,18 +2,21 @@ import { useState  } from "react";
 import '../styling/Accountcreation.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Adminlogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
 
   const handleSignIn = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/adminlogin", {
+      const response = await fetch("https://madespacer-2.onrender.com/adminlogin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +30,7 @@ const Adminlogin = () => {
         toast.success("Successfully signed in", {
           autoClose: 100,
           onClose: () => {
-            window.location.href = "Adminhomepage";
+            navigate ("/Adminhomepage");
           },
         });
       } else {
@@ -39,7 +42,6 @@ const Adminlogin = () => {
     }
   };
 
-  console.log("Userlogin component rendered");
 
   return (
     <div className="wrapper">

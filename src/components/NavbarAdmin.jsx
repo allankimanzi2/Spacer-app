@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import "../styling/Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();  
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -31,7 +33,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/adminlogout", {
+      const response = await fetch("https://madespacer-2.onrender.com/adminlogout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -42,7 +44,7 @@ const Navbar = () => {
         toast.success("Successfully signed out", {
           autoClose: 100,
           onClose: () => {
-            window.location.href = "/login";
+            navigate ("/login");
           },
         });
       } else {
